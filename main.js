@@ -1,17 +1,18 @@
 const TelegramBot = require('node-telegram-bot-api');
 const Web3 = require('web3');
+require('dotenv').config();
 const { ethers } = require('ethers');
 
 // Telegram Bot Token (replace with your own token)
-const token = '6683046722:AAEDQ3i-AaEPsQpyaebUCd_m7z4RjZ8lU_s';
+const token = process.env.TELEGRAM_BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
 // Ethereum (ERC-20) configuration
-const ethereumRpcUrl = 'https://mainnet.infura.io/v3/78b26f120968491d88fafe7f8efbcd03'; // mainnet
+const ethereumRpcUrl = process.env.ETHEREUM_RPC_URL; // mainnet
 const ethereumProvider = new ethers.providers.JsonRpcProvider(ethereumRpcUrl);
 
 // Binance Smart Chain (BEP-20) configuration
-const bscRpcUrl = 'https://bsc-dataseed.binance.org/'; // mainnet
+const bscRpcUrl = process.env.BSC_RPC_URL; // mainnet
 const bscProvider = new ethers.providers.JsonRpcProvider(bscRpcUrl);
 
 // Welcome message with a start button and description
